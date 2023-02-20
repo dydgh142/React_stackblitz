@@ -3,6 +3,7 @@ class Counter {
   // 기본 옵션 (개발자가 설정한)
   // 인스턴스 생성 과정 없이 바로 접근/조작할 수 있게 한다.
   // 정적인(static) 메서드
+  // static
   static defaultOptions = {
     count: 1,
     min: 1,
@@ -11,6 +12,7 @@ class Counter {
   };
 
   // null "비어 있다"
+  // private
   #component = null;
   #options = null;
 
@@ -26,7 +28,7 @@ class Counter {
     // 개발자의 옵션과 사용자의 옵션을 병합(merge, combine)
     // 전개 구문
     this.#options = {
-      ...this.defaultOptions,
+      ...Counter.defaultOptions,
       ...userOptions,
     };
 
@@ -36,10 +38,22 @@ class Counter {
 
   // 클래스 필드에 정의된 함수는
   // 클래스로부터 생성된 인스턴스의 메서드(포함 함수)
+  // private
+  #incrementButton = null;
+  #decrementButton = null;
+  #output = null;
+
   #init() {
-    console.log('초기화');
+    // 뷰(View)의 요소 접근/참조
+    // 인스턴스 비공개 멤버(변수)
+    this.#incrementButton = this.#component.querySelector('button:first-child');
+    this.#decrementButton = this.#component.querySelector('button:last-child');
+    this.#output = this.#component.querySelector('output');
+
+    console.log(this.#incrementButton);
   }
 
+  // public
   render() {
     console.log('렌더링');
   }
@@ -68,11 +82,11 @@ const myCounter = new Counter(
 // 생성 과정 없이 언제든지 외부에서 접근 가능/변경
 // 스태틱 멤버란?
 // 생성 과정이 없어도 접근할 수 있는 변수 또는 함수
-console.log(Counter.defaultOptions);
+// console.log(Counter.defaultOptions);
 
 // 인스턴스 멤버란?
 // 생성 과정이 있어야지만 접근할 수 있는 변수 또는 함수
-console.log(new Counter().render());
+// console.log(new Counter().render());
 
 // 필요하다면 사용자가 모든 Counter 컴포넌트에 설정될 기본 옵션을 변경 가능
 // Counter.defaultOptions = {
