@@ -33,30 +33,28 @@ class Counter {
     this.#decrementButton = this.#component.lastElementChild;
 
     this.#component.addEventListener('click', (e) => {
-      //클릭하면 타겟 꺼내오기기
       const { target } = e;
 
       if (target.matches('button:first-child')) {
-        this.increment(); //증가해주세요
-        this.#render(); //랜더링해주세요
+        this.increment();
+        this.#render();
       }
 
       if (target.matches('button:last-child')) {
-        this.decrement(); //감소해주세요
-        this.#render(); //랜더링해주세요
+        this.decrement();
+        this.#render();
       }
+
     });
   }
 
   #render() {
-    //각 함수로 이동동
     this.#renderIncrementButton();
     this.#renderDecrementButton();
 
     this.#output.value = this.count;
   }
 
-  //증가하는 함수
   #renderIncrementButton() {
     let { max } = this.#options;
     if (this.#count === max) {
@@ -68,7 +66,6 @@ class Counter {
     }
   }
 
-  //감소하는함수
   #renderDecrementButton() {
     let { min } = this.#options;
     if (this.#count === min) {
@@ -119,5 +116,5 @@ new Counter(document.querySelector('.counter2'), {
   min: 7,
   count: 9,
   max: 16,
-  step: 4,
+  step: 4
 });
