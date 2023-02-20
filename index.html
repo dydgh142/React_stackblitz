@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+  <meta charset="UTF-8" />
+    <title>Vanilla vs. React 프로그래밍</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="main.css" />
+    <script src="//unpkg.com/react/umd/react.development.js" crossorigin></script>
+    <script src="//unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+    <script src="//unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <script type="module" src="vanilla.js"></script>
+    <script type="text/jsx" data-type="module" src="react.js"></script>
+  </head>
+  <body>
+    
+    <div class="container">
+      
+      <div class="vanilla">
+        <h2 class="headline">vanilla</h2>
+        <div class="counter">
+          <button type="button" aria-label="카운트 1 증가">+</button>
+          <output aria-live="polite">0</output>
+          <button type="button" aria-label="카운트 1 감소">-</button>
+        </div>
+      </div>
+
+      <div class="react">
+        <h2 class="headline">react</h2>
+        <div data-component="Counter">
+          <!-- React Counter 컴포넌트 렌더링 -->
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
